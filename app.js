@@ -1,13 +1,30 @@
 const express = require("express");
+const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const chalk = require("chalk");
 const boxen = require("boxen");
 const path = require("path");
 const fs = require("fs");
 
+require("dotenv").config();
+
+const routes = require("./api/routes/route");
+const users = require("./api/routes/users");
+
 const app = express();
 
-const routes = require("./api/route");
+const dbURI = process.env.dbURI;
+
+mongoose
+  .connect(dbURI, {
+    useNewUrlParser: true,
+    useCreateIndex: true,
+    useUnifiedTopology: true,
+  })
+  .then(() => console.log("Database Connected"))
+  .catch((err) => console.log(err));
+
+mongoose.Promise = global.Promise;
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
