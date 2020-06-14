@@ -43,7 +43,7 @@ app.use((req, res, next) => {
   next();
 });
 
-app.use("/api", routes);
+app.use("/api", users);
 
 app.use((req, res, next) => {
   const error = new Error("Not found 123");
