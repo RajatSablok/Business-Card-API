@@ -21,7 +21,7 @@ router.get("/app", (req, res) => {
   //   console.log("gege");
 
   const result =
-    chalk.blue(`                Hello, I'm name ${name}`) +
+    chalk.blue(`                  Hello, I'm ${name}`) +
     newLine +
     newLine +
     chalk.red(`   LinkedIn: `) +
